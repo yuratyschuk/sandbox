@@ -6,9 +6,7 @@ import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,13 +33,13 @@ public class PeopleTest {
     @BeforeEach
     public void setup() {
         peopleList = new ArrayList<>();
+        people1 = new People(1, "John", "Ivanov", 20, new Date());
 
-        people1 = new People(1, "Test", "People", 20, new Date());
-
-        people2 = new People(2, "Test2", "People2", 16,
+        people2 = new People(2, "Roman", "Smith", 16,
                 new Date());
 
-        people3 = new People(3, "Test3", "People3", 25, new Date());
+        people3 = new People(3, "James", "Brown", 25, new Date());
+
 
         peopleList.add(people1);
         peopleList.add(people2);
@@ -80,7 +78,7 @@ public class PeopleTest {
     public void testFindPeopleInList() {
         assertThat(peopleList)
                 .extracting(People::getFirstName)
-                .anySatisfy(value -> assertThat(value).matches("Test"));
+                .anySatisfy(value -> assertThat(value).matches("John"));
     }
 
     @Test
@@ -91,8 +89,8 @@ public class PeopleTest {
 
     @Test
     public void testFilterPeopleByName() {
-        assertThat(peopleList).filteredOn(people -> people.getFirstName().contains("Test"))
-                .containsOnly(people1, people2, people3);
+        assertThat(peopleList).filteredOn(people -> people.getFirstName().contains("John"))
+                .containsOnly(people1);
     }
 
     @Test
@@ -104,16 +102,16 @@ public class PeopleTest {
     @Test
     public void testExtractFirstNamesAndCheck() {
         assertThat(peopleList).extracting(People::getFirstName)
-                .contains("Test", "Test2", "Test3")
+                .contains("John", "Roman", "James")
                 .doesNotContain("Not contain");
     }
 
     @Test
     public void testExtractFirstNameAndAgeToTupleAndCheck() {
         assertThat(peopleList).extracting(People::getFirstName, People::getAge)
-                .contains(tuple("Test", 20),
-                        tuple("Test2", 16),
-                        tuple("Test3", 25));
+                .contains(tuple("John", 20),
+                        tuple("Roman", 16),
+                        tuple("James", 25));
     }
 
 

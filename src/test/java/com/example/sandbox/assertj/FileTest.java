@@ -1,20 +1,31 @@
 package com.example.sandbox.assertj;
 
+import com.example.sandbox.assertj.util.FileUtil;
 import lombok.SneakyThrows;
-import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.contentOf;
 
 public class FileTest {
 
-    private File testFile = new File("src/main/resources/test.txt");
+    private final String TEXT_TO_WRITE = "AssertJ test";
 
-    private final String FILE_TEXT = "AssertJ test";
+    private final String PATH_TO_FILE = "src/main/resources/test.txt";
+
+    private File testFile;
+
+    private FileUtil fileUtil;
+
+    @BeforeEach
+    public void setup() {
+        testFile = new File(PATH_TO_FILE);
+    }
+
     @Test
     public void testFileExists() {
 
@@ -22,29 +33,25 @@ public class FileTest {
     }
 
     @Test
+    public void testCreateFileAndWriteToIt() {
+
+        fileUtil = new FileUtil();
+        fileUtil.writeToFile(PATH_TO_FILE, TEXT_TO_WRITE);
+
+        assertThat(contentOf(testFile)).contains(TEXT_TO_WRITE);
+    }
+
+
+    @Test
     public void testFileContentWithStartsWithContainsAndEndsWith() {
-        assertThat(contentOf(testFile)).startsWith("This").contains("is a text file").endsWith("to test");
+        assertThat(contentOf(testFile)).startsWith("AssertJ").endsWith("test");
 
     }
 
     @Test
     public void testFileContentWithIsEqualTo() {
-        assertThat(contentOf(testFile)).isEqualTo("This is a text file to test");
+        assertThat(contentOf(testFile)).isEqualTo("AssertJ test");
     }
 
-    @Test
-    public void testCreateFileAndWriteToIt() {
 
-        writeToFile();
-
-        File file = new File("src/main/resources/testFileToWrite.txt");
-        assertThat(contentOf(file)).contains(FILE_TEXT);
-    }
-
-    @SneakyThrows
-    private void writeToFile() {
-        FileWriter fileWriter = new FileWriter("src/main/resources/testFileToWrite.txt");
-        fileWriter.write(FILE_TEXT);
-        fileWriter.close();
-    }
 }
