@@ -1,12 +1,9 @@
-package com.example.sandbox.assertj;
+package com.example.sandbox.file.util;
 
-import com.example.sandbox.assertj.util.FileUtil;
-import lombok.SneakyThrows;
-import org.junit.jupiter.api.BeforeEach;
+import com.example.sandbox.file.util.FileUtil;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.FileWriter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.contentOf;
@@ -15,16 +12,12 @@ public class FileTest {
 
     private final String TEXT_TO_WRITE = "AssertJ test";
 
-    private final String PATH_TO_FILE = "src/main/resources/test.txt";
+    private final String PATH_TO_FILE = "src/test/resources/test.txt";
 
-    private File testFile;
+    private final File testFile = new File(PATH_TO_FILE);
 
-    private FileUtil fileUtil;
+    private final FileUtil fileUtil = new FileUtil();
 
-    @BeforeEach
-    public void setup() {
-        testFile = new File(PATH_TO_FILE);
-    }
 
     @Test
     public void testFileExists() {
@@ -35,7 +28,6 @@ public class FileTest {
     @Test
     public void testCreateFileAndWriteToIt() {
 
-        fileUtil = new FileUtil();
         fileUtil.writeToFile(PATH_TO_FILE, TEXT_TO_WRITE);
 
         assertThat(contentOf(testFile)).contains(TEXT_TO_WRITE);
