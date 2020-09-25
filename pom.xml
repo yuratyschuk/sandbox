@@ -70,6 +70,12 @@
             <version>29.0-jre</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>5.14.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
