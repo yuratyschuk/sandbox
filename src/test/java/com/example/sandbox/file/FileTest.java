@@ -1,7 +1,7 @@
-package com.example.sandbox.file.util;
+package com.example.sandbox.file;
 
 import com.example.sandbox.file.util.FileUtil;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 
 import java.io.File;
 

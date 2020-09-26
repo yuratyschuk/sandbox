@@ -1,7 +1,7 @@
 package com.example.sandbox.model;
 
 import com.google.common.collect.Lists;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 
 import java.util.Date;
 import java.util.List;
@@ -20,7 +20,7 @@ public class PersonTest {
 
     private final List<Person> personList = Lists.newArrayList(person1, person2, person3);
 
-    @Test
+    @Test(dependsOnMethods = "testListWithPeopleSize")
     public void testListIsNotNullAndContainsPeople() {
         personList.remove(person3);
 
@@ -37,7 +37,7 @@ public class PersonTest {
         assertThat(personList.size()).isGreaterThanOrEqualTo(3);
     }
 
-    @Test
+    @Test(dependsOnMethods = "testListWithPeopleSize")
     public void testListPeopleIn() {
         assertThat(person1).isIn(personList);
 

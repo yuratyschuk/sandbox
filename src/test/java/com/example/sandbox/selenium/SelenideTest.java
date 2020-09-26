@@ -3,7 +3,7 @@ package com.example.sandbox.selenium;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.example.sandbox.selenium.util.SelenidePage;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.example.sandbox.selenium.util.UtilFields.*;
@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class SelenideTest {
 
 
-    @Test
+    @Test(groups = {"SelenideTests"})
     public void testOpenGoogleStartingWebPage() {
         open(GOOGLE_URL, SelenidePage.class)
                 .shouldHave(GOOGLE_TITLE);
@@ -21,14 +21,16 @@ public class SelenideTest {
 
     }
 
-    @Test
+
+    @Test(groups = {"SelenideTests"})
     public void testOpenWikipediaSeleniumPageAndGetTitle() {
         Selenide.open(SELENIUM_SOFTWARE_URL, SelenidePage.class)
                 .shouldHave(SELENIUM_SOFTWARE_TITLE);
 
     }
 
-    @Test
+
+    @Test(groups = {"SelenideTests"})
     public void testOpenWikipediaAndClickOnEdit() {
         open(SELENIUM_SOFTWARE_URL, SelenidePage.class)
                 .buttonShouldHave("Edit")
@@ -38,7 +40,8 @@ public class SelenideTest {
                 .isEqualTo(SELENIUM_EDIT);
     }
 
-    @Test
+
+    @Test(groups = {"SelenideTests"})
     public void testOpenWikipediaAndTypeToSearch() {
         open(SELENIUM_SOFTWARE_URL, SelenidePage.class)
                 .inputShouldHave("placeholder", WIKIPEDIA_SEARCH)
