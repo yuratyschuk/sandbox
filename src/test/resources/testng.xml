@@ -34,5 +34,12 @@
             <package name="com.example.sandbox.testng"/>
         </packages>
     </test>
+
+    <test name = "GuavaTests">
+        <classes>
+            <class name="com.example.sandbox.guava.GuavaCollections"/>
+            <class name="com.example.sandbox.guava.GuavaOrdering"/>
+        </classes>
+    </test>
 </suite>
 
