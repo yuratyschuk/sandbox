@@ -1,0 +1,38 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="TestNGConfig" verbose="1" >
+
+    <test name="FileTests">
+        <classes>
+            <class name="com.example.sandbox.file.FileTest"/>
+        </classes>
+    </test>
+
+    <test name="PersonTests">
+        <classes>
+            <class name="com.example.sandbox.model.PersonTest"/>
+        </classes>
+    </test>
+
+
+    <test name="SeleniumTests">
+        <groups>
+            <run>
+                <include name="SelenideTests"/>
+                <include name="SeleniumTests"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="com.example.sandbox.selenium.SelenideTest"/>
+            <class name="com.example.sandbox.selenium.SeleniumTest"/>
+        </classes>
+    </test>
+
+    <test name="TestNGFeatures">
+        <packages>
+            <package name="com.example.sandbox.testng"/>
+        </packages>
+    </test>
+</suite>
+
