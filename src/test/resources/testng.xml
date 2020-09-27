@@ -37,8 +37,8 @@
 
     <test name = "GuavaTests">
         <classes>
-            <class name="com.example.sandbox.guava.GuavaCollections"/>
-            <class name="com.example.sandbox.guava.GuavaOrdering"/>
+            <class name="com.example.sandbox.guava.TestGuavaCollections"/>
+            <class name="com.example.sandbox.guava.TestGuavaOrdering"/>
         </classes>
     </test>
 </suite>

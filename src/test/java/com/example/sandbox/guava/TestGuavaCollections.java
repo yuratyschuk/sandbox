@@ -11,7 +11,7 @@ import java.util.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
-public class GuavaCollections {
+public class TestGuavaCollections {
 
     private final Person person1 = new Person(1, "John", "Ivanov", 20, new Date());
 

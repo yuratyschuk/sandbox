@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GuavaOrdering {
+public class TestGuavaOrdering {
 
 
     private final Person person1 = new Person(1, "John", "Ivanov", 20, new Date());
