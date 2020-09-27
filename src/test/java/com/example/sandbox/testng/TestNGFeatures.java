@@ -13,10 +13,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TestNGFeatures {
 
 
-    @DataProvider(name = "personTests")
-    public Object[][] createData1() {
-        return new Object[][] {
-                { new Person(1, "John", "Ivanov", 20, new Date())},
+    @DataProvider(name = "personTestsData")
+    public Object[][] personTestData() {
+        return new Object[][]{
+                {new Person(1, "John", "Ivanov", 20, new Date())},
 
                 {new Person(2, "Roman", "Smith", 16, new Date())},
 
@@ -24,18 +24,33 @@ public class TestNGFeatures {
         };
     }
 
-    @Test(dataProvider = "personTests")
+    @DataProvider(name = "wrongPersonTestsData")
+    public Object[][] personWrongTestData() {
+        return new Object[][] {
+                {new Person(1, "", "", 10, new Date())},
+                {null}
+        };
+    }
+
+    @Test(dataProvider = "personTestsData")
     public void testGivenPersonAgeParameters(Person person) {
         assertThat(person.getAge()).isGreaterThan(15);
     }
 
-    @Test(dependsOnMethods = {"testGivenPersonAgeParameters"}, dataProvider = "personTests")
+    @Test(dependsOnMethods = {"testGivenPersonAgeParameters"}, dataProvider = "personTestsData")
     public void printPersonInfoIfSuccess(Person person) {
         log.info(person);
     }
 
-    @Test(dataProvider = "personTests")
-    public void verifyData1(Person person) {
+    @Test(dataProvider = "personTestsData")
+    public void verifyData(Person person) {
+        assertThat(person).isNotNull();
+        assertThat(person.getFirstName()).isNotEmpty();
+        assertThat(person.getAge()).isGreaterThan(15);
+    }
+
+    @Test(dataProvider = "wrongPersonTestsData", expectedExceptions = AssertionError.class)
+    public void testWrongParametersForPerson(Person person) {
         assertThat(person).isNotNull();
         assertThat(person.getFirstName()).isNotEmpty();
         assertThat(person.getAge()).isGreaterThan(15);
