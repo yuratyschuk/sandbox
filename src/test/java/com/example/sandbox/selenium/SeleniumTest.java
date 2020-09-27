@@ -43,7 +43,7 @@ public class SeleniumTest {
     }
 
 
-    @Test(groups = {"SelenideTests"})
+    @Test(groups = {"SeleniumTests"})
     public void testOpenWikipediaAndClickOnEdit() {
         webDriver.get(SELENIUM_SOFTWARE_URL);
 

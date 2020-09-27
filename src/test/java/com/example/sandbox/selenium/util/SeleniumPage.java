@@ -8,9 +8,9 @@ public class SeleniumPage {
 
     private final WebDriver webDriver;
 
-    By editFieldLocator = By.id("ca-edit");
+    private final By editFieldLocator = By.id("ca-edit");
 
-    By inputSearchLocator = By.name("search");
+    private final By inputSearchLocator = By.name("search");
 
     public SeleniumPage(WebDriver webDriver) {
         this.webDriver = webDriver;
