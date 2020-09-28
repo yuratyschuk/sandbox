@@ -1,15 +1,13 @@
 package com.example.sandbox.xml;
 
-import com.example.sandbox.model.Employee;
-import com.example.sandbox.xml.util.StaxParserForEmployee;
+import com.example.sandbox.model.Office;
+import com.example.sandbox.xml.util.StaxParserForOffice;
 import lombok.SneakyThrows;
-import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class StaxParserTest {
 
@@ -18,12 +16,17 @@ public class StaxParserTest {
     @SneakyThrows
     public void parseStudentFile() {
 
-        StaxParserForEmployee staxParserForEmployee = new StaxParserForEmployee();
+        StaxParserForOffice staxParserForOffice = new StaxParserForOffice();
 
-        staxParserForEmployee.parse("src/test/resources/file_for_parse2.xml");
-        List<Employee> employeeList = staxParserForEmployee.getData();
+        staxParserForOffice.parse("src/test/resources/file_for_parse2.xml");
+        List<Office> officeList = staxParserForOffice.getOffice();
 
-        assertThat(employeeList.size()).isEqualTo(6);
+        assertThat(officeList.size()).isEqualTo(2);
 
+        assertThat(officeList)
+                .extracting(Office::getEmployeeList)
+                .isNotEmpty();
     }
+
+
 }

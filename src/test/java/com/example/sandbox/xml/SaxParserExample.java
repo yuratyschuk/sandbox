@@ -1,8 +1,8 @@
 package com.example.sandbox.xml;
 
-import com.example.sandbox.model.Employee;
+import com.example.sandbox.model.Office;
 import com.example.sandbox.model.Student;
-import com.example.sandbox.xml.util.XmlHandlerForEmployee;
+import com.example.sandbox.xml.util.XmlHandlerForOffice;
 import com.example.sandbox.xml.util.XmlHandlerForStudent;
 import lombok.SneakyThrows;
 import org.testng.annotations.Test;
@@ -14,7 +14,7 @@ import javax.xml.parsers.SAXParserFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SaxParserExample {
 
@@ -49,12 +49,17 @@ public class SaxParserExample {
     @SneakyThrows
     @Test
     public void testSaxParserEmployee() {
-        XmlHandlerForEmployee handler = new XmlHandlerForEmployee();
+        XmlHandlerForOffice handler = new XmlHandlerForOffice();
 
         parser.parse(SaxParserExample.class.getResourceAsStream("/file_for_parse2.xml"), handler);
-        List<Employee> employeeList = handler.getData();
 
-        assertThat(employeeList.size()).isEqualTo(6);
+        List<Office> officeList = handler.getOfficeList();
+
+        assertThat(officeList.size()).isEqualTo(2);
+
+        assertThat(officeList)
+                .extracting(Office::getEmployeeList)
+                .isNotEmpty();
     }
 
 

@@ -1,7 +1,7 @@
 package com.example.sandbox.xml;
 
-import com.example.sandbox.model.Employee;
-import com.example.sandbox.xml.util.DomParserForEmployee;
+import com.example.sandbox.model.Office;
+import com.example.sandbox.xml.util.DomParserForOffice;
 import lombok.SneakyThrows;
 import org.testng.annotations.Test;
 
@@ -15,12 +15,15 @@ public class DomParserTest {
     @Test
     @SneakyThrows
     public void domParserExample() {
-        DomParserForEmployee domParserForEmployee = new DomParserForEmployee();
+        DomParserForOffice domParserForOffice = new DomParserForOffice();
 
-        domParserForEmployee.parse("src/test/resources/file_for_parse2.xml");
-        List<Employee> employeeList = domParserForEmployee.getData();
+        domParserForOffice.parse("src/test/resources/file_for_parse2.xml");
+        List<Office> officeList = domParserForOffice.getOfficeList();
 
-        assertThat(employeeList.size()).isEqualTo(6);
+        assertThat(officeList.size()).isEqualTo(2);
 
+        assertThat(officeList)
+                .extracting(Office::getEmployeeList)
+                .isNotEmpty();
     }
 }
