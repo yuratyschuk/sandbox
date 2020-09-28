@@ -21,7 +21,7 @@ public class StaxParserForOffice {
 
     private List<Employee> employeeList = new ArrayList<>();
 
-    private List<Office> officeList = new ArrayList<>();
+    private final List<Office> officeList = new ArrayList<>();
 
     private final XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
     private Office office;
