@@ -16,11 +16,11 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SaxParserExample {
+public class TestSaxParser {
 
     private final SAXParserFactory factory = SAXParserFactory.newInstance();
-    private final SAXParser parser = factory.newSAXParser();
 
+    private final SAXParser parser = factory.newSAXParser();
 
 
     private final Student student1 = new Student(1, "Yurii", "Tyshchuk", 83);
@@ -29,18 +29,16 @@ public class SaxParserExample {
     private final Student student4 = new Student(4, "James", "Brown", 70);
 
 
-    private static List<Student> students = new ArrayList<>();
-
-    public SaxParserExample() throws ParserConfigurationException, SAXException {
+    public TestSaxParser() throws ParserConfigurationException, SAXException {
     }
 
     @SneakyThrows
     @Test
     public void testSaxParserStudent() {
         XmlHandlerForStudent handler = new XmlHandlerForStudent();
-        parser.parse(SaxParserExample.class.getResourceAsStream("/file_for_parse.xml"), handler);
+        parser.parse(TestSaxParser.class.getResourceAsStream("/file_for_parse.xml"), handler);
 
-        students = handler.getStudentList();
+        List<Student> students = handler.getStudentList();
 
         assertThat(students).containsExactly(student1, student2, student3, student4);
         assertThat(students.size()).isEqualTo(4);
@@ -51,7 +49,7 @@ public class SaxParserExample {
     public void testSaxParserEmployee() {
         XmlHandlerForOffice handler = new XmlHandlerForOffice();
 
-        parser.parse(SaxParserExample.class.getResourceAsStream("/file_for_parse2.xml"), handler);
+        parser.parse(TestSaxParser.class.getResourceAsStream("/file_for_parse2.xml"), handler);
 
         List<Office> officeList = handler.getOfficeList();
 
