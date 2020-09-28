@@ -31,8 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
-<<<<<<< HEAD
+
 /chromedriver/
 /test-output/
-=======
->>>>>>> 5fc481bb6b2f54347d1618d95764e6eecdd8351c
+
