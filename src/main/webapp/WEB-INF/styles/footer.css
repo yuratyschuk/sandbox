@@ -1,0 +1,21 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #1abc9c;
+    height: 80px;
+    color: white;
+    font-size: 20px;
+    border: 1px solid black;
+}
+
+#title {
+    float: left;
+    margin-left: 5%;
+}
+
+#info {
+    float: right;
+    margin-right: 5%;
+}

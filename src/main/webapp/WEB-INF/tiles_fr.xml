@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="common" template="/WEB-INF/layouts/commonLayout.jsp">
+        <put-attribute name="header" value="/WEB-INF/tiles/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/tiles/menu.jsp"/>
+        <put-attribute name="footer" value="common_footer"/>
+    </definition>
+
+    <definition name="common_footer" template="/WEB-INF/tiles/footer.jsp">
+        <put-list-attribute name="items">
+            <add-attribute value="/WEB-INF/tiles/banner.jsp" />
+            <add-attribute value="/WEB-INF/tiles/credits.jsp" />
+        </put-list-attribute>
+    </definition>
+
+    <definition name="documentation_footer" template="/WEB-INF/tiles/footer.jsp">
+        <put-list-attribute name="items">
+            <add-attribute value="/WEB-INF/tiles/bannerApache.jsp" />
+            <add-attribute value="/WEB-INF/tiles/creditsApache.jsp" />
+        </put-list-attribute>
+    </definition>
+
+    <definition name="documentation" extends="common">
+        <put-attribute name="title" value="Page de documentation"/>
+        <put-attribute name="footer" value="documentation_footer"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/fr/documentationBody.jsp"/>
+    </definition>
+
+    <definition name="welcome" extends="common">
+        <put-attribute name="title" value="Page d'accueil"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/fr/welcomeBody.jsp"/>
+    </definition>
+
+    <definition name="home" extends="common">
+        <put-attribute name="title" value="Page d'accueil"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/fr/homeBody.jsp"/>
+    </definition>
+</tiles-definitions>
