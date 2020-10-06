@@ -6,7 +6,7 @@ public class SecondThread extends Thread {
 
     private volatile int counter = 0;
 
-    private boolean isThreadActive = true;
+    private volatile boolean isThreadActive = true;
 
     @SneakyThrows
     @Override

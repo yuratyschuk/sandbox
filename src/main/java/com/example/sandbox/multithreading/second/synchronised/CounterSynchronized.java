@@ -8,7 +8,7 @@ public class CounterSynchronized {
         return ++count;
     }
 
-    public static int getIncrement() {
+    public static int getCount() {
         return count;
     }
 }

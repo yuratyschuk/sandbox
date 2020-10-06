@@ -12,7 +12,7 @@ public class MainThread {
             executorService.submit(new CounterThread());
         }
 
-        System.out.println(CounterSynchronized.getIncrement());
+        System.out.println(CounterSynchronized.getCount());
 
         executorService.shutdown();
     }
