@@ -1,4 +1,4 @@
-package com.example.sandbox.multithreading.first.without.daemon;
+package com.example.sandbox.multithreading.thread.enter.word.without.daemon;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package com.example.sandbox.multithreading.third;
+package com.example.sandbox.multithreading.deadlock;
 
 import java.util.concurrent.CountDownLatch;
 

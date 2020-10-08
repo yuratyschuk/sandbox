@@ -1,4 +1,4 @@
-package com.example.sandbox.multithreading.second.atomic;
+package com.example.sandbox.multithreading.counter.atomic;
 
 public class CounterThread extends Thread {
 

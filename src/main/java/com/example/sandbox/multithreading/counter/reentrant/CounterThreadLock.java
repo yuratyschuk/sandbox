@@ -1,4 +1,4 @@
-package com.example.sandbox.multithreading.second.reentrant;
+package com.example.sandbox.multithreading.counter.reentrant;
 
 public class CounterThreadLock extends Thread {
 

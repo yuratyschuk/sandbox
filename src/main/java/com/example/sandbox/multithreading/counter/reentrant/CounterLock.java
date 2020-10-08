@@ -1,4 +1,4 @@
-package com.example.sandbox.multithreading.second.reentrant;
+package com.example.sandbox.multithreading.counter.reentrant;
 
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -10,9 +10,8 @@ public class CounterLock {
 
     public static int increment() {
         lock.lock();
-        count++;
+        ++count;
         lock.unlock();
-
         return count;
     }
 

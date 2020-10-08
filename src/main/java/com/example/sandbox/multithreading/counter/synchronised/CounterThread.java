@@ -1,4 +1,4 @@
-package com.example.sandbox.multithreading.second.synchronised;
+package com.example.sandbox.multithreading.counter.synchronised;
 
 public class CounterThread extends Thread {
 
