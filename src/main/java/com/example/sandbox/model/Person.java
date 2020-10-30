@@ -4,11 +4,13 @@ import com.google.common.base.MoreObjects;
 import com.google.common.collect.ComparisonChain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Person implements Comparable<Person> {
 
     private int id;
