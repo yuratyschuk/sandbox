@@ -1,6 +1,7 @@
 package com.example.sandbox.reflection;
 
 import com.example.sandbox.model.Person;
+import lombok.SneakyThrows;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -67,7 +68,8 @@ public class ReflectionExampleTest {
     }
 
     @Test
-    public void setNewInstanceAndChangePrivateVariableData() throws IllegalAccessException, InstantiationException, NoSuchFieldException {
+    @SneakyThrows
+    public void setNewInstanceAndChangePrivateVariableData() {
         Class<?> personClass = Person.class;
 
         Object person = personClass.newInstance();
@@ -75,6 +77,20 @@ public class ReflectionExampleTest {
         Field field = person.getClass().getDeclaredField(PERSON_FIELD_NAME);
 
         field.setAccessible(true);
+        field.set(person, PERSON_NEW_NAME);
+
+        assertEquals(PERSON_NEW_NAME, field.get(person));
+    }
+
+    @Test(expected = IllegalAccessException.class)
+    @SneakyThrows
+    public void setNewInstanceAndChangePrivateVariableDataWithoutChangingAccessModifier() {
+        Class<?> personClass = Person.class;
+
+        Object person = personClass.newInstance();
+
+        Field field = person.getClass().getDeclaredField(PERSON_FIELD_NAME);
+
         field.set(person, PERSON_NEW_NAME);
 
         assertEquals(PERSON_NEW_NAME, field.get(person));

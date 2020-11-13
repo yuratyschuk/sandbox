@@ -1,6 +1,5 @@
 package com.example.sandbox.model;
 
-import com.google.common.base.MoreObjects;
 import com.google.common.collect.ComparisonChain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,17 +30,5 @@ public class Person implements Comparable<Person> {
                 .compare(this.age, object.age)
                 .result();
     }
-
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("id", id)
-                .add("firstName", firstName)
-                .add("lastName", lastName)
-                .add("age", age)
-                .add("birthDate", birthDate)
-                .toString();
-    }
-
 
 }
